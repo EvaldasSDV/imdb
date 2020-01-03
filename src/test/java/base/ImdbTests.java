@@ -8,6 +8,7 @@ import pages.ImdbHomePage;
 import pages.ImdbResultsPage;
 import pages.ImdbVideoGameResults;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Condition.text;
 
 @Listeners({ScreenShooter.class} )
 public class ImdbTests {
@@ -22,6 +23,6 @@ public class ImdbTests {
         open("http://www.imdb.com");
         ImdbResultsPage results = new ImdbHomePage().searchFor("games of thrones");
         ImdbVideoGameResults videoResults = results.selectCategory("Video Game");
-        videoResults.assertIfHasText("Video Game Titles");
+        videoResults.categorySubHeader().shouldHave(text("Video Game Titles"));
     }
 }
