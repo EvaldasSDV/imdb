@@ -22,7 +22,7 @@ public class ImdbTests {
     public void testGot() {
         open("http://www.imdb.com");
         ImdbResultsPage results = new ImdbHomePage().searchFor("games of thrones");
-        ImdbVideoGameResults videoResults = results.selectCategory("Video Game");
+        ImdbVideoGameResults videoResults = results.selectVideoGameCategory();
         videoResults.categorySubHeader().shouldHave(text("Video Game Titles"));
     }
 }
