@@ -16,11 +16,11 @@ public class ImdbTests {
     @BeforeTest
     public void before() {
         ScreenShooter.captureSuccessfulTests = true;
+        open("http://www.imdb.com");
     }
 
     @Test
     public void testGot() {
-        open("http://www.imdb.com");
         ImdbResultsPage results = new ImdbHomePage().searchFor("games of thrones");
         ImdbVideoGameResults videoResults = results.selectVideoGameCategory();
         videoResults.categorySubHeader().shouldHave(text("Video Game Titles"));
